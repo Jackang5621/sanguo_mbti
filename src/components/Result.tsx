@@ -55,18 +55,26 @@ export default function Result({ character, onRestart }: ResultProps) {
             className="aspect-[3/4] w-full max-w-[320px] bg-[#1A1A1A] mx-auto mb-12 relative flex items-center justify-center group overflow-hidden"
           >
             <div className="absolute inset-4 border border-white/20 z-20 pointer-events-none"></div>
-            
-            {/* Dynamic Avatar (Nanobanana Style placeholder via Dicebear) */}
-            <img 
-              src={`https://api.dicebear.com/9.x/adventurer/svg?seed=${character.name}nanobanana&backgroundColor=1a1a1a`} 
-              alt={`${character.name} nanobanana portrait`}
-              className="absolute inset-0 w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:opacity-100 group-hover:mix-blend-normal transition-all duration-500 z-10"
+
+            {/* Locally-rendered seal-style portrait (no external image requests) */}
+            <div
+              className="absolute inset-0 z-0"
+              style={{
+                backgroundImage: [
+                  'radial-gradient(circle at 30% 25%, rgba(192,0,0,0.55), transparent 55%)',
+                  'radial-gradient(circle at 75% 80%, rgba(139,0,0,0.5), transparent 60%)',
+                  'repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 8px)',
+                  'linear-gradient(180deg, #2a1515 0%, #1A1A1A 60%, #0c0606 100%)',
+                ].join(', '),
+              }}
             />
-            
+
             <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-[#1A1A1A]/20 to-transparent z-10"></div>
 
             <div className="flex flex-col items-center justify-center relative z-20">
-               <div className="text-white text-8xl md:text-[120px] opacity-10 font-bold drop-shadow-xl">{character.name.charAt(0)}</div>
+              <div className="text-white text-[140px] md:text-[180px] leading-none font-black drop-shadow-xl">
+                {character.name.charAt(0)}
+              </div>
             </div>
             
             <div className="absolute bottom-8 left-8 text-white text-[10px] tracking-[0.5em] uppercase z-20">

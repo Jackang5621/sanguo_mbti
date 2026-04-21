@@ -7,12 +7,19 @@ type LandingProps = {
 export default function Landing({ onStart }: LandingProps) {
   return (
     <div className="flex-1 flex flex-col w-full relative overflow-hidden">
-      {/* Epic warlords background */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center"
+      {/* Ink-wash warlord backdrop (CSS-only, no external assets) */}
+      <div
+        className="absolute inset-0 z-0"
         style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1599839619722-39751411ea63?q=80&w=1200&auto=format&fit=crop")',
-          filter: 'grayscale(100%) contrast(120%) brightness(0.6)'
+          backgroundColor: '#1A1A1A',
+          backgroundImage: [
+            'radial-gradient(ellipse 60% 45% at 20% 15%, rgba(192,0,0,0.35), transparent 70%)',
+            'radial-gradient(ellipse 55% 50% at 85% 80%, rgba(139,0,0,0.45), transparent 70%)',
+            'radial-gradient(ellipse 80% 40% at 50% 100%, rgba(0,0,0,0.9), transparent 75%)',
+            'repeating-linear-gradient(115deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 9px)',
+            'linear-gradient(180deg, #2a1a1a 0%, #1A1A1A 55%, #0f0a0a 100%)',
+          ].join(', '),
+          filter: 'contrast(115%) brightness(0.75)',
         }}
       />
       <div className="absolute inset-0 z-0 bg-gradient-to-t from-[#F7F3EE] via-[#F7F3EE]/80 to-transparent" />
